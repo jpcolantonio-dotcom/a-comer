@@ -154,7 +154,7 @@ function pintarSemana(){
       <button onclick="cambiarPersona()">Cambiar</button>
     </div>
     <div class="content">
-      <div class="hint">Marcá si vas a comer cada día. Podés cambiarlo hasta las <b>10:00</b> de ese mismo día. Si no marcás nada, se asume que SÍ vas a comer.</div>
+      <div class="hint">Marcá si vas a comer cada día. Podés cambiarlo hasta las <b>10:00</b> de ese mismo día. Si no marcás nada, se asume que NO vas a comer.</div>
       <div id="dias"></div>
     </div>`;
   document.getElementById('app').innerHTML=html;
@@ -175,7 +175,7 @@ function pintarSemana(){
 function tarjetaDia(d){
   const f=fmtFecha(d);
   const resp=respuestasPorFecha[f];
-  const come=resp?resp.come:true; // sin marcar => se asume que sí
+  const come=resp?resp.come:false; // sin marcar => se asume que NO
   const invitados=resp?(resp.invitados||0):0;
   const locked=bloqueado(d);
   const esHoy=f===fmtFecha(hoy());
@@ -191,7 +191,7 @@ function tarjetaDia(d){
       <button class="btnsino si ${come?'sel':''}" id="si-${f}" ${locked?'disabled':''}>Sí como</button>
       <button class="btnsino no ${!come?'sel':''}" id="no-${f}" ${locked?'disabled':''}>No como</button>
     </div>
-    ${!resp&&!locked?'<div class="asumido">Todavía no marcaste -- por ahora cuenta como "Sí"</div>':''}
+    ${!resp&&!locked?'<div class="asumido">Todavía no marcaste -- por ahora cuenta como "No"</div>':''}
     ${mostrarInv?`<div class="invrow">
       <span class="lbl">Invitados</span>
       <button class="stepbtn" id="inv-menos-${f}" ${locked?'disabled':''}>−</button>

@@ -1,7 +1,7 @@
 {
   "name": "A comer",
   "short_name": "A comer",
-  "start_url": "./comeda.html",
+  "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#1B3A6B",
   "theme_color": "#1B3A6B",
